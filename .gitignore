@@ -1,0 +1,19 @@
+# Ignore virtual environment
+venv/
+.env/
+__pycache__/
+*.pyc
+
+# OS or IDE junk
+.DS_Store
+.vscode/
+.idea/
+
+# Data or model files
+*.csv
+*.h5
+*.pkl
+*.db
+
+# Streamlit cache
+.streamlit/
