@@ -51,12 +51,16 @@ if st.button("🚀 Fetch & Analyze"):
         # ------------------------- TAB 1: Overview -------------------------
         with tab1:
             st.subheader("📉 Candlestick & Volume Chart")
+
+           # Ensure Date is datetime
+            df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
+
+            # # Drop missing essential columns
+            # df.dropna(subset=['Date', 'Open', 'High', 'Low', 'Close'], inplace=True)
+
+            # Create figure
             fig = go.Figure()
 
-            df['Date'] = pd.to_datetime(df['Date'])
-            df['Date_str'] = df['Date'].dt.strftime('%Y-%m-%d')
-
-            
             # Candlestick
             fig.add_trace(go.Candlestick(
                 x=df['Date'],
@@ -76,6 +80,7 @@ if st.button("🚀 Fetch & Analyze"):
                 yaxis='y2'
             ))
 
+            # Layout
             fig.update_layout(
                 xaxis_rangeslider_visible=False,
                 yaxis_title="Price",
@@ -84,6 +89,8 @@ if st.button("🚀 Fetch & Analyze"):
                 height=600,
                 legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
             )
+
+            # ✅ Only one plot call
             st.plotly_chart(fig, use_container_width=True)
             st.dataframe(df.tail(), use_container_width=True)
 
