@@ -53,6 +53,10 @@ if st.button("🚀 Fetch & Analyze"):
             st.subheader("📉 Candlestick & Volume Chart")
             fig = go.Figure()
 
+            df['Date'] = pd.to_datetime(df['Date'])
+            df['Date_str'] = df['Date'].dt.strftime('%Y-%m-%d')
+
+            
             # Candlestick
             fig.add_trace(go.Candlestick(
                 x=df['Date'],
@@ -86,6 +90,9 @@ if st.button("🚀 Fetch & Analyze"):
         # ------------------------- TAB 2: EMA Trends -------------------------
         with tab2:
             st.subheader("📈 Exponential Moving Averages (Trend Visualization)")
+            df['Date'] = pd.to_datetime(df['Date'])
+            df['Date_str'] = df['Date'].dt.strftime('%Y-%m-%d')
+
             ema_fig = go.Figure()
             ema_fig.add_trace(go.Scatter(x=df['Date'], y=df['Close'], name='Close', line=dict(color='gold', width=2)))
             ema_colors = {'EMA20': 'green', 'EMA50': 'red', 'EMA100': 'purple', 'EMA200': 'blue'}
@@ -126,6 +133,8 @@ if st.button("🚀 Fetch & Analyze"):
             preds = model.predict(x_test)
             preds = scaler.inverse_transform(preds).flatten()
             actual = scaler.inverse_transform(input_data[100:].reshape(-1,1)).flatten()
+            df['Date'] = pd.to_datetime(df['Date'])
+            df['Date_str'] = df['Date'].dt.strftime('%Y-%m-%d')
 
             # Chart
             comp = go.Figure()
