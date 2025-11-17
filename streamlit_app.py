@@ -34,10 +34,13 @@ with st.sidebar:
     st.caption("Tip: Use NSE tickers with .NS or .BO suffix")
 
 # ------------------------- LOAD MODEL -------------------------
+# Cache the loaded model so it isn't reloaded from disk on every interaction
+# Using cache_resource instead of cache_data because the object is a heavy ML model, not plain data
 @st.cache_resource
 def load_my_model(path="stock_dl_model.h5"):
-    return load_model(path)
+    return load_model(path) # Loads a pre-trained deep learning model (Keras .h5 format)
 
+# Load the model once and reuse it - avoid huge inference delays and RAM spikes
 model = load_my_model()
 
 # ------------------------- MAIN LOGIC -------------------------
