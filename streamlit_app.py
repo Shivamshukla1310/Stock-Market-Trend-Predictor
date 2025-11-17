@@ -225,6 +225,10 @@ if st.button("🚀 Fetch & Analyze"):
         # ------------------------- TAB 4: Insights -------------------------
         with tab4:
             st.subheader("📊 Investment Insight")
+            
+            # Crude decision rule using arbitrary ±2% bands.
+            # This is NOT statistically validated and can be misleading on volatile assets.
+            # Proper approach: confidence intervals, volatility-adjusted thresholds, or backtested signals.
             if change > 2:
                 st.success("📈 The model indicates a potential **Uptrend**. Positive momentum detected — may be a good time to consider short-term investment.")
             elif change < -2:
@@ -232,8 +236,10 @@ if st.button("🚀 Fetch & Analyze"):
             else:
                 st.warning("⚖️ The trend appears **Neutral**. Wait for stronger signals before making a move.")
 
+            # Display exact values instead of qualitative labels — at least gives user real numbers
             st.info(f"**Last predicted closing price:** {last_pred:.2f}\n\n**Last actual closing price:** {last_actual:.2f}")
 
+            # Placeholder for future value-add features (currently marketing fluff until implemented)
             st.caption("Upcoming: AI-based Sentiment Analysis, Risk Scoring, and News Feed Integration 📡")
 
         # ------------------------- CSV DOWNLOAD -------------------------
