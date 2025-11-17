@@ -215,7 +215,8 @@ if st.button("🚀 Fetch & Analyze"):
             )
             st.plotly_chart(comp, use_container_width=True)
 
-            # Metrics
+            # ------------------- Prediction Change Summary Metric -------------------
+            # Only compares last known real price to final predicted price — not a forecast guarantee
             last_pred = preds[-1]
             last_actual = actual[-1]
             change = ((last_pred - last_actual) / last_actual) * 100
