@@ -9,8 +9,12 @@ from tensorflow.keras.models import load_model # to load pre-trained ML / Deep l
 from sklearn.preprocessing import MinMaxScaler # for scalling data into 0-1 range before model prediction
 
 # ------------------------- PAGE SETUP -------------------------
-st.set_page_config(layout="wide", page_title="Stock Trend Predictor")
-st.title("📈 Stock Trend Predictor (Smart Prototype)")
+st.set_page_config(
+    layout="wide", # expands content to full browser width instead of narrow default
+    page_title="Stock Trend Predictor" # title shown in browser tab, useful for clarity & branding
+)
+# Display a main heading at the top of the app UI
+st.title("📈 Stock Trend Predictor (Smart Prototype)") # immediate user-facing title for cantent
 
 # ------------------------- SIDEBAR -------------------------
 with st.sidebar:
