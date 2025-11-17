@@ -201,15 +201,16 @@ if st.button("🚀 Fetch & Analyze"):
             df['Date'] = pd.to_datetime(df['Date'])
             df['Date_str'] = df['Date'].dt.strftime('%Y-%m-%d')
 
-            # Chart
+            # ------------------------- Visualization: Actual vs Predicted -------------------------
             comp = go.Figure()
             comp.add_trace(go.Scatter(y=actual, mode='lines', name='Actual', line=dict(color='green')))
             comp.add_trace(go.Scatter(y=preds, mode='lines', name='Predicted', line=dict(color='red')))
+            
             comp.update_layout(
                 height=500,
                 title="Actual vs Predicted Closing Prices",
                 template="plotly_dark",
-                xaxis_title="Days",
+                xaxis_title="Days", # Index-based, NOT calendar-based (important limitation!)
                 yaxis_title="Price"
             )
             st.plotly_chart(comp, use_container_width=True)
