@@ -1,11 +1,12 @@
-import streamlit as st
-import pandas as pd
-import numpy as np
-import yfinance as yf
-from datetime import datetime
-import plotly.graph_objects as go
-from tensorflow.keras.models import load_model
-from sklearn.preprocessing import MinMaxScaler
+# Core libraries for UI, data handling, math, API, charts, and ML model
+import streamlit as st # for building interactive web apps
+import pandas as pd # for data manipulation and analysis
+import numpy as np # for numerical operations
+import yfinance as yf # to fetch historical stock / financial data
+from datetime import datetime # for handling and formating dates
+import plotly.graph_objects as go # for building interactive visual charts 
+from tensorflow.keras.models import load_model # to load pre-trained ML / Deep learning models
+from sklearn.preprocessing import MinMaxScaler # for scalling data into 0-1 range before model prediction
 
 # ------------------------- PAGE SETUP -------------------------
 st.set_page_config(layout="wide", page_title="Stock Trend Predictor")
