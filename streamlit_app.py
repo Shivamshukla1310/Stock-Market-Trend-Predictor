@@ -73,16 +73,16 @@ if st.button("🚀 Fetch & Analyze"):
         with tab1:
             st.subheader("📉 Candlestick & Volume Chart")
 
-           # Ensure Date is datetime
+           # Enforce proper datetime type; `errors='coerce'` avoids crashes if Yahoo returns malformed dates
             df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
 
-            # # Drop missing essential columns
+            # # Optional safety step for bad data; kept commented in case user wants raw inspection
             # df.dropna(subset=['Date', 'Open', 'High', 'Low', 'Close'], inplace=True)
 
-            # Create figure
+            # Initialize an empty Plotly figure so multiple traces can be layered cleanly
             fig = go.Figure()
 
-            # Candlestick
+            # Price movement via candlestick (standard for technical analysis)
             fig.add_trace(go.Candlestick(
                 x=df['Date'],
                 open=df['Open'],
@@ -92,16 +92,16 @@ if st.button("🚀 Fetch & Analyze"):
                 name='Price'
             ))
 
-            # Volume overlay
+            # Add volume bars on a secondary Y-axis (scaled to millions for readability)
             fig.add_trace(go.Bar(
                 x=df['Date'],
                 y=df['Volume'] / 1e6,
                 name='Volume (M)',
-                opacity=0.3,
-                yaxis='y2'
+                opacity=0.3, # makes sure candlesticks remian visually dominant
+                yaxis='y2' # Assign to secondary axis instead of stacking on price values
             ))
 
-            # Layout
+            # Configure axes, theme, and chart layout for clarity and professional look
             fig.update_layout(
                 xaxis_rangeslider_visible=False,
                 yaxis_title="Price",
@@ -111,8 +111,10 @@ if st.button("🚀 Fetch & Analyze"):
                 legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
             )
 
-            # ✅ Only one plot call
+            # Render chart once (important — calling twice causes duplicate visual glitches)
             st.plotly_chart(fig, use_container_width=True)
+
+            # Show most recent rows for quick sanity check of data quality & indicator calculations
             st.dataframe(df.tail(), use_container_width=True)
 
         # ------------------------- TAB 2: EMA Trends -------------------------
