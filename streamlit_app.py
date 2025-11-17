@@ -17,11 +17,20 @@ st.set_page_config(
 st.title("📈 Stock Trend Predictor (Smart Prototype)") # immediate user-facing title for cantent
 
 # ------------------------- SIDEBAR -------------------------
+# sider block for user inputs control (keep UI clean and separated from main view)
 with st.sidebar:
     st.header("🔍 Stock Settings")
+    
+    # user-entered stock ticker symbol (default set up to a reliable Indian stock to avoid empty state)
     symbol = st.text_input("Stock ticker (e.g. POWERGRID.NS, AAPL)", "POWERGRID.NS")
+    
+    # Historical date start date (default chosen far back so long-term training / testing is possible)
     start_date = st.date_input("Start date", value=pd.to_datetime("2000-01-01"))
+    
+    # end date automatically bound to today's date to ensure no invalid range
     end_date = st.date_input("End date", value=datetime.now().date())
+    
+    # short guidance to reduce user mistakes with exchange-specific ticker formats
     st.caption("Tip: Use NSE tickers with .NS or .BO suffix")
 
 # ------------------------- LOAD MODEL -------------------------
