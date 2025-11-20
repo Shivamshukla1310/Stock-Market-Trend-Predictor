@@ -33,7 +33,7 @@ https://stock-market-trend-predictor-trbsdvd5qtku3msgn9uqqo.streamlit.app/
 *(Add your images inside the repository and replace these paths accordingly)*
 
 <p align="center">
-  <img src=""C:\Users\Hp\OneDrive\Pictures\Screenshots\Screenshot 2025-11-16 223939.png"" width="70%" />
+  <img src="https://github.com/Shivamshukla1310/Nifty-Radar/blob/main/Screenshot%202025-11-16%20160629.png" width="70%" />
 </p>
 
 <p align="center">
