@@ -37,7 +37,7 @@ https://stock-market-trend-predictor-trbsdvd5qtku3msgn9uqqo.streamlit.app/
 </p>
 
 <p align="center">
-  <img src=""C:\Users\Hp\OneDrive\Pictures\Screenshots\Screenshot 2025-11-16 160629.png"" width="40%" />
+  <img src="https://github.com/Shivamshukla1310/Nifty-Radar/blob/main/Screenshot%202025-11-16%20223939.png" width="40%" />
 </p>
 
 ---
